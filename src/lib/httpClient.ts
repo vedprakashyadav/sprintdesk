@@ -1,7 +1,9 @@
 import axios, { type AxiosError, type InternalAxiosRequestConfig } from 'axios';
 import { useAuthStore } from '@/features/auth/store/authStore';
 
-const BASE_URL = import.meta.env.VITE_DUMMYJSON_BASE_URL ?? 'https://dummyjson.com';
+const configuredBaseUrl = import.meta.env.VITE_DUMMYJSON_BASE_URL?.trim();
+
+const BASE_URL = configuredBaseUrl || 'https://dummyjson.com';
 
 export const httpClient = axios.create({ baseURL: BASE_URL });
 
